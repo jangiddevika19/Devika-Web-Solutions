@@ -95,12 +95,18 @@ try{
 
 
 await emailjs.send(
-"service_mkjrjyp",
-"template_li5zdeq",
-form,
-{
-publicKey: "_WgZhn1NzggSPGWvl"
-}
+  "service_mkjrjyp",
+  "template_li5zdeq",
+  {
+    from_name: form.name,
+    from_email: form.email,
+    phone: form.phone,
+    service: form.service,
+    message: form.message,
+  },
+  {
+    publicKey: "_WgZhn1NzggSPGWvl",
+  }
 );
 
 
