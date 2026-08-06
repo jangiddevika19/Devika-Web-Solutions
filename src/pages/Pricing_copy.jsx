@@ -10,15 +10,16 @@ import {
   Wrench,
   TrendingUp,
   Sparkles,
-  ArrowRight,
 } from "lucide-react";
 
 const PLANS = [
   {
     icon: Rocket,
     title: "Landing Website",
+    priceLabel: "Starting From",
+    price: "₹12,999",
     popular: false,
-    cta: "Let's Talk",
+    cta: "Get Started",
     features: [
       "Modern UI Design",
       "Responsive Website",
@@ -31,8 +32,10 @@ const PLANS = [
   {
     icon: Building2,
     title: "Business Website",
+    priceLabel: "Starting From",
+    price: "₹29,999",
     popular: true,
-    cta: "Let's Talk",
+    cta: "Get Started",
     features: [
       "Premium UI/UX Design",
       "Multiple Pages",
@@ -43,34 +46,38 @@ const PLANS = [
     ],
   },
   {
-    icon: GraduationCap,
-    title: "School & Organization Website",
-    popular: false,
-    cta: "Let's Talk",
-    features: [
-      "Responsive Design",
-      "Admission Form",
-      "Gallery & Notice Board",
-      "Events Section",
-      "Basic SEO",
-      "Free Deployment",
-      "30 Days Support",
-    ],
-  },
+  icon: GraduationCap,
+  title: "School & Organization Website",
+  priceLabel: "Starting From",
+  price: "₹39,999",
+  popular: false,
+  cta: "Get Quote",
+  features: [
+    "Responsive Design",
+    "Admission Form",
+    "Gallery & Notice Board",
+    "Events Section",
+    "Basic SEO",
+    "Free Deployment",
+    "30 Days Support",
+  ],
+},
   {
-    icon: Server,
-    title: "Full Stack Web Application",
-    popular: false,
-    cta: "Let's Talk",
-    features: [
-      "React Frontend",
-      "Java / Spring Boot Backend",
-      "Database Integration",
-      "Secure Authentication",
-      "API Integration",
-      "Custom Features",
-    ],
-  },
+  icon: Server,
+  title: "Full Stack Web Application",
+  priceLabel: null,
+  price: "Let's Discuss",
+  popular: false,
+  cta: "Let's Talk",
+  features: [
+    "React Frontend",
+    "Java / Spring Boot Backend",
+    "Database Integration",
+    "Secure Authentication",
+    "API Integration",
+    "Custom Features",
+  ],
+},
 ];
 
 const ADDITIONAL_SERVICES = [
@@ -82,7 +89,7 @@ const ADDITIONAL_SERVICES = [
   { icon: TrendingUp, label: "SEO Optimization" },
 ];
 
-function PlanCard({ icon: Icon, title, popular, cta, features }) {
+function PlanCard({ icon: Icon, title, priceLabel, price, popular, cta, features }) {
   return (
     <div
       className={`
@@ -97,7 +104,7 @@ function PlanCard({ icon: Icon, title, popular, cta, features }) {
     >
       {popular && (
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-500 to-sky-600 px-4 py-1 text-[11px] font-semibold tracking-wide text-white shadow-[0_6px_16px_rgba(14,165,233,0.35)]">
-          Most Popular
+          Popular
         </span>
       )}
 
@@ -114,6 +121,21 @@ function PlanCard({ icon: Icon, title, popular, cta, features }) {
       <h3 className="mt-5 text-base font-semibold tracking-tight text-slate-900">
         {title}
       </h3>
+
+      <div className="mt-3">
+        {priceLabel && (
+          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+            {priceLabel}
+          </p>
+        )}
+        <p
+          className={`mt-1 font-semibold tracking-tight text-slate-900 ${
+            priceLabel ? "text-3xl" : "text-2xl"
+          }`}
+        >
+          {price}
+        </p>
+      </div>
 
       <ul className="mt-6 flex flex-1 flex-col gap-2.5 border-t border-slate-100 pt-6">
         {features.map((feature) => (
@@ -156,20 +178,19 @@ export default function Pricing() {
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-medium tracking-wide text-slate-500 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-sky-500" />
-            Our Services
+            Pricing
           </span>
 
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Digital Solutions Built for{" "}
+            Simple{" "}
             <span className="bg-gradient-to-r from-sky-500 to-sky-700 bg-clip-text text-transparent">
-              Your Business
-            </span>
+              Pricing
+            </span>{" "}
+            For Your Digital Needs
           </h2>
 
           <p className="mt-4 text-base leading-relaxed text-slate-500">
-            We build modern, fast, responsive and scalable websites tailored
-            to your business goals. Let's discuss your project and create
-            something amazing together.
+            Flexible solutions to help businesses build modern digital experiences.
           </p>
         </div>
 
@@ -209,43 +230,6 @@ export default function Pricing() {
             Domain and hosting charges are separate and depend on selected
             provider and project requirements.
           </p>
-        </div>
-
-        {/* Call To Action */}
-        <div
-          className="
-            relative mt-20 overflow-hidden rounded-2xl border border-slate-200
-            bg-gradient-to-br from-slate-900 via-slate-900 to-sky-950
-            px-8 py-14 text-center shadow-[0_20px_50px_rgba(15,23,42,0.25)]
-            sm:px-14 sm:py-16
-          "
-        >
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute left-1/2 top-0 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-sky-500/20 blur-3xl" />
-          </div>
-
-          <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            Ready to Start Your Project?
-          </h3>
-
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
-            Let's discuss your ideas and build a modern website that helps
-            your business grow.
-          </p>
-
-          <a
-            href="#contact"
-            className="
-              group mt-8 inline-flex items-center justify-center gap-2 rounded-full
-              bg-white px-7 py-3 text-sm font-semibold tracking-tight text-slate-900
-              shadow-[0_8px_20px_rgba(255,255,255,0.15)] transition-all duration-300
-              hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(255,255,255,0.22)]
-              active:translate-y-0 active:scale-[0.98]
-            "
-          >
-            Let's Talk
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </a>
         </div>
       </div>
     </section>
