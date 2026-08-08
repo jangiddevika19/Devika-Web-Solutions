@@ -42,7 +42,7 @@ const SOCIALS = [
   {
     icon: FaInstagram,
     label: "Instagram",
-    href: "https://www.instagram.com/codingwithdvk",
+    href: "https://www.instagram.com/elvoraa.studio",
   },
 ];
 
