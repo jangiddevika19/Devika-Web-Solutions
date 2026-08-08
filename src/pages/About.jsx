@@ -131,35 +131,33 @@ export default function About() {
 
 
 
-          {/* stats */}
-          <div className="mt-12 flex items-center gap-8 border-t border-slate-200 pt-8">
+         {/* stats */}
+<div className="mt-12 grid grid-cols-3 border-t border-slate-200 pt-8">
 
-            {STATS.map((stat, i) => (
+  {STATS.map((stat, i) => (
 
-              <div key={stat.label} className="flex items-center gap-8">
+    <div
+      key={stat.label}
+      className={`
+        flex min-w-0 flex-col
+        ${i > 0 ? "border-l border-slate-200 pl-3 sm:pl-6" : ""}
+        ${i < STATS.length - 1 ? "pr-3 sm:pr-6" : ""}
+      `}
+    >
 
-                <div>
+      <p className="text-xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+        {stat.value}
+      </p>
 
-                  <p className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-                    {stat.value}
-                  </p>
+      <p className="mt-1 text-[10px] font-medium leading-snug text-slate-700 sm:text-xs">
+        {stat.label}
+      </p>
 
-                  <p className="mt-1 max-w-[9rem] text-xs font-medium leading-snug text-slate-700">
-  {stat.label}
-</p>
+    </div>
 
-                </div>
+  ))}
 
-
-                {i < STATS.length - 1 && (
-                  <div className="h-10 w-px bg-slate-200" />
-                )}
-
-              </div>
-
-            ))}
-
-          </div>
+</div>
 
 
         </div>
